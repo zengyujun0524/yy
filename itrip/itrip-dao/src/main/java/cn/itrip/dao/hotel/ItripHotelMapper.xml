@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.itrip.dao.hotel.ItripHotelMapper">
+
+    <select id="getHotelFacilities" resultType="cn.itrip.beans.pojo.ItripHotel">
+      select facilities as facilities from itrip_hotel
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="cityId != null and cityId!=''">
+                and id=#{cityId}
+            </if>
+        </trim>
+    </select>
+    <select id="getHotelPolicy" resultType="cn.itrip.beans.pojo.ItripHotel">
+        select  hotelPolicy as  hotelPolicy from itrip_hotel
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="cityId != null and cityId!=''">
+                and id=#{cityId}
+            </if>
+        </trim>
+    </select>
+    <select id="getItripHotelListByMap" resultType="cn.itrip.beans.pojo.ItripHotel">
+    select * FROM itrip_hotel
+    <trim prefix="where" prefixOverrides=" and | or">
+        <if test="cityId != null and cityId!=''">
+            cityId=#{cityId}
+        </if>
+    </trim>
+    order by creationDate desc
+    <if test="pageSize != null  and pageSize !='' ">
+        limit 0,#{pageSize}
+    </if>
+    </select>
+    <select id="getItripHote" resultType="cn.itrip.beans.pojo.ItripHotel">
+        SELECT details FROM itrip_hotel  WHERE cityId=2 GROUP BY cityId
+    </select>
+
+</mapper>

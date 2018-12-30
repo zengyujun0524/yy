@@ -1,0 +1,4 @@
+cn\itrip\beans\vo\hotel\ItripHotelVO.class
+cn\itrip\service\SearchHotelService.class
+cn\itrip\service\SerachHotelServiceImpl.class
+cn\itrip\dao\BaseDao.class
